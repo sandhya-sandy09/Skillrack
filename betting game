@@ -1,0 +1,57 @@
+/*
+In a betting game involving the roll of a dice, Sandeep gains Rs.X if an odd number turns up
+and he loses Rs.Y is an even number turns up.
+The numbers shown on the face of the dice in a certain number of games is passed as input. 
+The values of X and Y are also passed as input. The program must print the net gain or loss as the output. 
+Input Format: First line will contain the numbers shown on the face of the dice separated by one or more spaces. 
+Second line will contain the value of X Third line will contain the value of Y
+Output Format: The net gain or loss (loss will be a negative value)
+
+
+*/
+
+import java.util.*;
+
+
+public class Hello {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Read the line of input containing numbers
+        String input = sc.nextLine();
+        String[] numberAsString = input.split("\\s+");
+        
+        // Create an integer array to hold the converted numbers
+        int[] numbers = new int[numberAsString.length];
+        
+        // Convert each string number to an integer
+        for (int i = 0; i < numberAsString.length; i++) {
+            numbers[i] = Integer.parseInt(numberAsString[i]);
+        }
+        
+        // Read values for X and Y
+        int X = sc.nextInt();
+        int Y = sc.nextInt();
+        
+        // Initialize the result variable
+        int result = 0; // Initialize result to zero
+        
+        // Calculate the net gain or loss based on X and Y
+        for (int number : numbers) {
+            if (number % 2 == 0) { // For even numbers
+                result -= Y; // Deduct Y for each even number
+            } else { // For odd numbers
+                result += X; // Add X for each odd number
+            }
+        }
+        
+        // Print the result
+        System.out.print(result);
+        
+        sc.close(); // Close the scanner
+    }
+}
+
+
+
+
